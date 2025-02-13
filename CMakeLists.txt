@@ -5,7 +5,18 @@ include(DefaultBuildType)
 
 # ==== Project Name ====
 project(ouster_ros)
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+  set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+  if(NOT DEFINED CMAKE_CXX_STANDARD)
+    set(CMAKE_CXX_STANDARD 17)
+    set(CMAKE_CXX_STANDARD_REQUIRED ON)
+  endif()
+
+  if(NOT DEFINED CMAKE_CXX_EXTENSIONS)
+    set(CMAKE_CXX_EXTENSIONS OFF)
+  endif()
+endif()
 # ==== Requirements ====
 find_package(Eigen3 REQUIRED)
 find_package(PCL REQUIRED COMPONENTS common)
